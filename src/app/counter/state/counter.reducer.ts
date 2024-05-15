@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { State, initialState } from "./counter.state";
 import { decrement, increment, reset } from "./counter.actions";
+import { Action } from "rxjs/internal/scheduler/Action";
 
 
 const _counterReducer = createReducer(
