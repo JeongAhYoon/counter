@@ -28,9 +28,7 @@ import { decrement, increment, reset } from '../state/counter.actions';
 // }
 
 export class CounterButtonsComponent implements OnInit {
- @Output() increment = new EventEmitter<void>();
- @Output() decrement = new EventEmitter<void>();
- @Output() reset = new EventEmitter<void>();
+
   constructor(private store : Store<{counterr:{State}}>) { }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { State, initialState } from "./counter.state";
-import { decrement, increment, reset } from "./counter.actions";
+import { cutomIncrement, decrement, increment, reset } from "./counter.actions";
 import { Action } from "rxjs/internal/scheduler/Action";
 
 
@@ -23,6 +23,13 @@ const _counterReducer = createReducer(
         return {
             ...state,
             counter: 0,
+        };
+    }),
+    on(cutomIncrement, (state:State, action):State =>{
+        console.log(action);
+        return {
+            ...state,
+            counter: state.counter + action.value,
         };
     })
 );
