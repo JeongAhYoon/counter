@@ -12,13 +12,15 @@ export class CustomCouterInputComponent implements OnInit {
   userNumber : number;
   constructor(private store:Store<{conterr: {State}}>) { }
 
+
+
   ngOnInit(): void {
   }
     
   public onAdd() {
     this.store.dispatch(cutomIncrement({value : +this.userNumber}));
     console.log(this.userNumber);
-    this.userNumber = null; 
+   // this.userNumber = null; 
   }
 
 }
