@@ -18,6 +18,8 @@ export class CustomCouterInputComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  public test()
     
   public onAdd() {
     this.store.dispatch(cutomIncrement({value : +this.userNumber}));
