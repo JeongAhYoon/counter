@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { cutomIncrement } from '../state/counter.actions';
+import { changeName, cutomIncrement } from '../state/counter.actions';
+import { CounterState } from '../state/counter.state';
 
 @Component({
   selector: 'app-custom-couter-input',
@@ -9,14 +10,18 @@ import { cutomIncrement } from '../state/counter.actions';
 })
 export class CustomCouterInputComponent implements OnInit {
 
- public test : string;
-
   public userNumber : number;
-  constructor(private store:Store<{conterr: {State}}>) { }
+  public authorName : string;
+async: any;
+  constructor(private store:Store<{counterr: CounterState}>) { }
 
 
 
   ngOnInit(): void {
+    this.store.select('counterr').subscribe( function(data) {
+        this.authorName = data.author;    
+        console.log(this.authorName);
+    }.bind(this));
   }
 
   example(){
@@ -24,13 +29,12 @@ export class CustomCouterInputComponent implements OnInit {
   }
 
   public onAdd() {
-    this.store.dispatch(cutomIncrement({value : +this.userNumber}));
+    this.store.dispatch(cutomIncrement({value : + this.userNumber}));
     console.log(this.userNumber);
    // this.userNumber = null; 
   }
 
-
-
-
-
+public onChangeText() {
+this.store.dispatch(changeName({value:'kelly Student'}));
+}
 }

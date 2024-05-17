@@ -1,8 +1,10 @@
-export interface State {
-    counter: number 
+export interface CounterState {
+    counter: number; 
+    author: string;
 }
 
-export const initialState: State = {
-    counter: 0
+export const initialState: CounterState = {
+    counter: 0,
+    author: 'Kelly Developer'
 }
 

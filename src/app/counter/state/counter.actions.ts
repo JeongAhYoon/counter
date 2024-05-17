@@ -8,4 +8,7 @@ export const cutomIncrement = createAction(
     'customInCrement', 
     props<{value:number}>() //보내고자 하는 데이터를 보내는 방법.. 여기서는 value만 보낸다. 
 );
+export const changeName = createAction('changeAuthorName',
+    props<{value:string}>()
+);
 
