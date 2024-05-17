@@ -23,6 +23,7 @@ export class CustomCouterInputComponent implements OnInit {
     return 0;
 
   }
+  public test2()
     
   public onAdd() {
     this.store.dispatch(cutomIncrement({value : +this.userNumber}));
