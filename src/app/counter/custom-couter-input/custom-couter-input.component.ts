@@ -19,7 +19,8 @@ export class CustomCouterInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public test1s() {
+  public test1s():number {
+    return 0;
 
   }
     
