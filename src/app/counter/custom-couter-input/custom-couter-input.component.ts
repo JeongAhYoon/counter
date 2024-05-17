@@ -25,7 +25,7 @@ export class CustomCouterInputComponent implements OnInit {
   }
   public test2() {
 
-    
+    return 0;
   }
     
   public onAdd() {
