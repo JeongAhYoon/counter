@@ -29,7 +29,7 @@ const _counterReducer = createReducer(
         console.log(action);
         return {
             ...state,
-            counter: state.counter + action.value,
+            counter: state.counter + action.value
         };
     })
 );
