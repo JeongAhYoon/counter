@@ -9,7 +9,7 @@ import { cutomIncrement } from '../state/counter.actions';
 })
 export class CustomCouterInputComponent implements OnInit {
 
-  userNumber : number;
+  public userNumber : number;
   constructor(private store:Store<{conterr: {State}}>) { }
 
   ngOnInit(): void {
