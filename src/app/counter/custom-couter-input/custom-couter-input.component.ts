@@ -8,7 +8,7 @@ import { cutomIncrement } from '../state/counter.actions';
   styleUrls: ['./custom-couter-input.component.css']
 })
 export class CustomCouterInputComponent implements OnInit {
-
+ public test : string;
   public userNumber : number;
   constructor(private store:Store<{conterr: {State}}>) { }
 
@@ -22,5 +22,9 @@ export class CustomCouterInputComponent implements OnInit {
     console.log(this.userNumber);
    // this.userNumber = null; 
   }
+
+
+
+
 
 }
