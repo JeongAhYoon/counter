@@ -4,6 +4,7 @@ import { changeName, cutomIncrement } from '../state/counter.actions';
 import { CounterState } from '../state/counter.state';
 import { getAuthorState } from '../state/counter.selectors';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-custom-couter-input',
@@ -47,7 +48,7 @@ export class CustomCouterInputComponent implements OnInit {
   public userNumber : number;
   public authorName$ : Observable<string>;
 async: any;
-  constructor(private store:Store<{counterr: CounterState}>) { }
+  constructor(private store:Store<AppState>) { }
 
 
 
