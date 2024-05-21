@@ -10,7 +10,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody *ngIf ="posts$ | async as postData">
@@ -21,6 +21,8 @@
             <td>
             <a href="#" class="btn btn-primary" 
             [routerLink]="['edit',post.id]">Update</a>
+            &nbsp;
+            <button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button>
             </td>
             </tr>
         </tbody>
