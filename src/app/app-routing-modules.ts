@@ -1,10 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { CounterComponent } from "./counter/counter/counter.component";
-import { PostsListComponent } from "./posts/posts-list/posts-list.component";
-import { AddpostComponent } from "./posts/addpost/addpost.component";
-import { EditPostComponent } from "./posts/edit-post/edit-post.component";
+import { CounterModule } from "./counter/counter.module";
+import { PostsModule } from "./posts/posts.module";
 
 const routes: Routes = [
     {
@@ -13,15 +11,11 @@ const routes: Routes = [
     },
     {
         path:'counter', 
-        component: CounterComponent
+        loadChildren: () => import('./counter/counter.module').then((m) =>CounterModule)
     },
     {
         path:'posts', 
-        component: PostsListComponent,
-        children:[
-            {path: 'add', component: AddpostComponent},
-            {path: 'edit/:id', component: EditPostComponent}
-        ]
+        loadChildren: () => import('./posts/posts.module').then((m) =>PostsModule)
     }
 ];
 

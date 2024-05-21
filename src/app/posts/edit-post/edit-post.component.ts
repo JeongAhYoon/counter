@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { getPostById } from '../state/posts.selectors';
@@ -22,9 +22,10 @@ public postSubscription : Subscription;
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       (params) => {
+        
         const id = params.get('id');
   
-        this.store.select(getPostById, {value: id}).subscribe((data) =>{
+        this.store.select(getPostById, {id: id}).subscribe((data) =>{
           this.post = data;    
           this.createForm();
         });
