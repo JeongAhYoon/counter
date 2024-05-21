@@ -14,6 +14,7 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppReducer } from './store/app.state';
 import { AddpostComponent } from './posts/addpost/addpost.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AddpostComponent } from './posts/addpost/addpost.component';
     HeaderComponent,
     PostsListComponent,
     AddpostComponent,
+    EditPostComponent,
     
   ],
   imports: [
