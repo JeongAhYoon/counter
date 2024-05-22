@@ -20,7 +20,7 @@ import { AppReducer } from './store/app.state';
   ],
   imports: [
     BrowserModule, 
-    StoreModule.forRoot( AppReducer ),
+    StoreModule.forRoot( {} ),
     AppRoutingModule,
     StoreDevtoolsModule.instrument({
       logOnly: !isDevMode(), // Restrict extension to log-only mode
