@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { CounterModule } from "./counter/counter.module";
 import { PostsModule } from "./posts/posts.module";
+import { AuthModule } from "./auth/auth.module";
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
         path:'posts', 
         loadChildren: () => import('./posts/posts.module').then((m) =>PostsModule)
+    },
+    {
+        path:'auth', 
+        loadChildren: () => import('./auth/auth.module').then((m) =>AuthModule)
     }
 ];
 
