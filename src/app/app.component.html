@@ -11,6 +11,7 @@
 
 <!-- chapter 10에서 rounterModule추가하고 이런식으로 만들었다 -->
 <app-header></app-header>
+<app-loading-spinner *ngIf="loadingSpinner$ |async"></app-loading-spinner>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

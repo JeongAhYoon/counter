@@ -8,7 +8,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppReducer } from './store/app.state';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component'
 
 
 @NgModule({
@@ -16,10 +17,11 @@ import { HttpClientModule} from '@angular/common/http'
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule, 
-    StoreModule.forRoot( {} ),
+    StoreModule.forRoot( AppReducer ),
     AppRoutingModule,
     HttpClientModule,
     StoreDevtoolsModule.instrument({
