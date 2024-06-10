@@ -10,11 +10,18 @@ import { User } from "../models/user.model";
 })
 export class AuthService {
 
+public timeoutInterval: any
+
  constructor(private http: HttpClient) {}
  
  public login(email: string, password: string) : Observable<AuthResposeData> {
 
   return this.http.post<AuthResposeData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.FIRBASE_API_KEY}`,{email,password,returnSecureToken: true});
+ }
+
+ public signUp(email: string, password: string): Observable<AuthResposeData>{
+    
+    return this.http.post<AuthResposeData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.FIRBASE_API_KEY}`,{email,password,returnSecureToken: true});
  }
 
  public formatUser(data: AuthResposeData) {
@@ -30,11 +37,50 @@ export class AuthService {
     case 'EMAIL_NOT_FOUND':
         return 'Email Not Found';
     case 'INVALID_PASSWORD':
-        return 'Invalid Password'
+        return 'Invalid Password';
+    case 'EMAIL_EXISTS':
+        return 'Email already Exist';
     default:
-        return 'Unknown error accured'
+        return 'Unknown error accured';
    }
-
  }
+
+
+
+ public setUserInLocalStorage(user: User) {
+    localStorage.setItem("userData", JSON.stringify(user));
+   this.runTimeInterval(user);
+ }
+
+public runTimeInterval(user: User) {
+  const currentTIme = new Date().getTime();
+    const expirationTime = user.expireDate.getTime();
+    const interval = expirationTime - currentTIme;
+
+    this.timeoutInterval = setTimeout( () =>
+        
+        {
+
+        }, interval
+
+    ); 
+}
+
+ public getUserFromLocalStorage() {
+    const data = localStorage.getItem("userData");
+    if (data)
+    {
+
+        const user : User = JSON.parse(data)
+    this.runTimeInterval(user);
+    return user;
+    }
+           
+        return null;
+
+  
+ }
+
+
 
 }

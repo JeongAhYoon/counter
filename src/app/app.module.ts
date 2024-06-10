@@ -10,6 +10,7 @@ import { AppReducer } from './store/app.state';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule} from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component'
+import { AuthEffects } from './auth/state/auth.effects';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     StoreDevtoolsModule.instrument({
       logOnly: !isDevMode(), // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
