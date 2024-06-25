@@ -6,7 +6,7 @@ export class User {
 
 
 
-        get expireDate()
+        public get expireDate()
         {
             return this.expirationDate;
         }

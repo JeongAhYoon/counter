@@ -56,6 +56,7 @@ public timeoutInterval: any
  }
 
 public runTimeInterval(user: User) {
+   
   const currentTIme = new Date().getTime();
     const expirationTime = user.expireDate.getTime();
     const interval = expirationTime - currentTIme;
@@ -69,7 +70,9 @@ public runTimeInterval(user: User) {
     const data = localStorage.getItem("userData");
     if (data)
     {
-        const user : User = JSON.parse(data)
+        
+        const parsedData = JSON.parse(data)
+        const user = new User(parsedData.email, parsedData.token, parsedData.localId, new Date(parsedData.expirationDate));
     this.runTimeInterval(user);
     return user;
     }       

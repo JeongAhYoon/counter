@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule} from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component'
 import { AuthEffects } from './auth/state/auth.effects';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { AuthEffects } from './auth/state/auth.effects';
     AppRoutingModule,
     HttpClientModule,
     StoreDevtoolsModule.instrument({
-      logOnly: !isDevMode(), // Restrict extension to log-only mode
+      logOnly: environment.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([AuthEffects])
   ],

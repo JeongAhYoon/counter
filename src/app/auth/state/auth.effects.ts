@@ -25,6 +25,7 @@ private router: Router) {}
               this.store.dispatch(setLoadingSpinner({status: false}));
               this.store.dispatch(setErrorMessage({errorMsg:''}));
                 const user = this.authService.formatUser(data);
+                
                 this.authService.setUserInLocalStorage(user);
                 return loginSuccess({user, redirect: true});
             }),
@@ -80,6 +81,7 @@ private router: Router) {}
  autoLogin$ = createEffect( () => {
   return this.actions$.pipe( ofType(autoLogin), mergeMap((action) => {
     const user = this.authService.getUserFromLocalStorage();
+    console.log("autoLogin$")
     return of(loginSuccess({user, redirect: false}));
   }
   ));
