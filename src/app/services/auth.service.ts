@@ -4,6 +4,9 @@ import { environment } from "src/environments/environment";
 import { AuthResposeData } from "../models/AuthResponseData.model";
 import { Observable } from "rxjs";
 import { User } from "../models/user.model";
+import { AppState } from "../store/app.state";
+import { Store } from "@ngrx/store";
+import { autoLogout } from "../auth/state/auth.actions";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +15,7 @@ export class AuthService {
 
 public timeoutInterval: any
 
- constructor(private http: HttpClient) {}
+ constructor(private http: HttpClient, private store:Store<AppState>) {}
  
  public login(email: string, password: string) : Observable<AuthResposeData> {
 
@@ -56,13 +59,9 @@ public runTimeInterval(user: User) {
   const currentTIme = new Date().getTime();
     const expirationTime = user.expireDate.getTime();
     const interval = expirationTime - currentTIme;
-
-    this.timeoutInterval = setTimeout( () =>
-        
-        {
-
+    this.timeoutInterval = setTimeout( () => {
+            this.store.dispatch(autoLogout());
         }, interval
-
     ); 
 }
 
@@ -70,17 +69,19 @@ public runTimeInterval(user: User) {
     const data = localStorage.getItem("userData");
     if (data)
     {
-
         const user : User = JSON.parse(data)
     this.runTimeInterval(user);
     return user;
-    }
-           
-        return null;
-
-  
+    }       
+        return null; 
  }
 
-
+public logout() {
+    localStorage.removeItem('userData');
+    if(this.timeoutInterval) {
+        clearTimeout(this.timeoutInterval);
+        this.timeoutInterval = null;
+    }
+}
 
 }

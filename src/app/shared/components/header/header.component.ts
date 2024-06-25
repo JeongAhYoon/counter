@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { autoLogout } from 'src/app/auth/state/auth.actions';
 import { getUserState } from 'src/app/auth/state/auth.selector';
 import { AppState } from 'src/app/store/app.state';
 
@@ -16,6 +17,11 @@ public authentificated$: Observable<boolean>;
 
   ngOnInit(): void {
     this.authentificated$ = this.store.select(getUserState);
+  }
+
+  public logout(event: Event) {
+    event.preventDefault();
+    this.store.dispatch(autoLogout());
   }
 
 }
